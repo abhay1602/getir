@@ -1,0 +1,9 @@
+com/getir/assignment/service/CustomerServiceTest.class
+com/getir/assignment/service/BookServiceTest.class
+com/getir/assignment/service/StatisticServiceTest.class
+com/getir/assignment/repository/OrderRepositoryTest.class
+com/getir/assignment/integration/CustomerControllerTest.class
+com/getir/assignment/repository/CustomerRepositoryTest.class
+com/getir/assignment/controller/CustomerControllerTest.class
+com/getir/assignment/controller/OrderControllerTest.class
+com/getir/assignment/service/OrderServiceTest.class
