@@ -29,11 +29,13 @@ public class CustomerController {
 
     @GetMapping("/get/order/{customerId}")
     public List<OrderDto> getCustomerOrders(@PathVariable Integer customerId) {
+        logger.info("getting all orders for customer " + customerId);
         return customerService.getCustomerOrders(customerId);
     }
 
     @PostMapping("/register")
-    public void createCustomer(@RequestBody CustomerDto customerDto) throws CustomerValidationException {
+    public void registerCustomer(@RequestBody CustomerDto customerDto) throws CustomerValidationException {
+        logger.info("register new customer with email " + customerDto.getEmail());
         customerService.registerCustomer(customerDto);
     }
 

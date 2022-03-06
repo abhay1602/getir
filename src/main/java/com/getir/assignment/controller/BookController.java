@@ -25,11 +25,13 @@ public class BookController {
 
     @PostMapping("/add")
     public void addBookToStock(@RequestBody BookDto bookDto) {
+        logger.info("adding new book with isbn" + bookDto.getIsbn());
         bookService.addBookToStock(bookDto);
     }
 
     @DeleteMapping("/delete/{isbn}")
     public void removeBookFromStock(@PathVariable Integer isbn) {
+        logger.info("removed book with isbn" + isbn);
         bookService.deleteBookFromStock(isbn);
     }
 

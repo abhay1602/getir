@@ -28,16 +28,19 @@ public class OrderController {
 
     @PostMapping("/place")
     public void placeOrders(@RequestBody OrderDto orderDto) {
+        logger.info("placing new order");
         orderService.placeOrder(orderDto);
     }
 
     @GetMapping("/get/{orderId}")
     public OrderDto getOrderByOrderId(@PathVariable Integer orderId) {
+        logger.info("getting order information for order id" + orderId);
         return orderService.getOrderById(orderId);
     }
 
     @GetMapping("/get/range")
     public List<OrderDto> getOrdersByArrival(@RequestParam String startDate, @RequestParam String endDate) {
+        logger.info("getting order information for given duration" + startDate +"and "+ endDate);
         return orderService.getOrderByArrival(startDate, endDate);
     }
 

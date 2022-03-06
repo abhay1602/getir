@@ -1,8 +1,7 @@
 package com.getir.assignment.integration;
 
 import com.getir.assignment.AssignmentApplication;
-import com.getir.assignment.dtos.CustomerDto;
-import com.getir.assignment.dtos.OrderDto;
+import com.getir.assignment.dtos.BookDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import org.springframework.test.context.jdbc.Sql;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration
 @ActiveProfiles("test")
-public class CustomerControllerTest {
+public class BookControllerTest {
 
     @LocalServerPort
     private int port;
@@ -27,19 +26,13 @@ public class CustomerControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String baseUrl = "/api/v1/customer";
+    private final String baseUrl = "/api/v1/book";
 
     @Sql(scripts = {"classpath:schema.sql"})
     @Test
-    public void getOrdersByCustomerIdTest() {
-        Assertions.assertNull(this.restTemplate.getForObject("http://localhost:" + port + baseUrl + "/get/order/1", OrderDto.class));
-    }
-
-    @Sql(scripts = {"classpath:schema.sql"})
-    @Test
-    public void registerCustomerIdTest() {
+    public void addBookTest() {
         ResponseEntity<Void> responseEntity = this.restTemplate.withBasicAuth("admin", "password")
-                .postForEntity("http://localhost:" + port + baseUrl + "/register", new CustomerDto(), Void.class);
+                .postForEntity("http://localhost:" + port + baseUrl + "/add", new BookDto(), Void.class);
         Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
